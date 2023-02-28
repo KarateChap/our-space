@@ -17,8 +17,8 @@
   <ion-segment
     [value]="segment"
     (ionChange)="onSegmentChanged($event)"
+    mode="md"
     color="primary"
-    class="pt-2"
   >
     <ion-segment-button value="status">
       <ion-label>Status</ion-label>
@@ -33,17 +33,17 @@
 </ion-header>
 
 <ion-content color="light">
-  <ion-list *ngIf="segment === 'chats'">
-    <ion-list-header class="text-base py-2 font-bold" color="light">
+  <ion-list *ngIf="segment === 'chats' && (chatRooms) as rooms">
+    <ion-list-header class="text-base font-bold" color="light">
       RECENT CHATS
     </ion-list-header>
 
-    <ion-item detail>
+    <ion-item *ngFor="let item of rooms" (click)="getChat(item)" [detail]="true">
       <ion-avatar slot="start">
-        <img [src]="'https://i.pravatar.cc/385'" />
+        <img [src]="item?.photo" />
       </ion-avatar>
       <ion-label>
-        Gabriel
+        {{item.name}}
 
         <p>
           <ion-text> message </ion-text>
@@ -52,33 +52,6 @@
       <ion-text slot="end" color="medium" class="text-sm">10:00 AM</ion-text>
     </ion-item>
 
-    <ion-item detail>
-      <ion-avatar slot="start">
-        <img [src]="'https://i.pravatar.cc/345'" />
-      </ion-avatar>
-      <ion-label>
-        Elamae
-
-        <p>
-          <ion-text> message </ion-text>
-        </p>
-      </ion-label>
-      <ion-text slot="end" color="medium" class="text-sm">10:00 AM</ion-text>
-    </ion-item>
-
-    <ion-item detail>
-      <ion-avatar slot="start">
-        <img [src]="'https://i.pravatar.cc/335'" />
-      </ion-avatar>
-      <ion-label>
-        Serin
-
-        <p>
-          <ion-text> message </ion-text>
-        </p>
-      </ion-label>
-      <ion-text slot="end" color="medium" class="text-sm">10:00 AM</ion-text>
-    </ion-item>
   </ion-list>
 
   <ion-fab slot="fixed" horizontal="end" vertical="bottom">
