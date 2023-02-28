@@ -33,11 +33,13 @@
 </ion-header>
 
 <ion-content color="light">
-
   <app-empty-screen *ngIf="(chatRooms | async)?.length === 0" [model]="model">
   </app-empty-screen>
 
-  <ion-list *ngIf="segment === 'chats' && (chatRooms | async) as rooms">
+  <ng-container *ngIf="segment === 'chats' && (chatRooms | async) as rooms">
+
+  <ion-list *ngIf="rooms?.length > 0">
+
     <ion-list-header class="text-base font-bold" color="light">
       RECENT CHATS
     </ion-list-header>
@@ -61,6 +63,8 @@
       </ng-container>
     </ion-item>
   </ion-list>
+
+</ng-container>
 
   <ion-fab slot="fixed" horizontal="end" vertical="bottom">
     <ion-fab-button (click)="newChat()">
