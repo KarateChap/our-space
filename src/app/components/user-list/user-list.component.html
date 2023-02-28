@@ -1,6 +1,11 @@
-<ion-item lines="full" (click)="redirect()" detail="true" class="w-[90%] m-[auto] rounded-[5px] pb-[1vh]">
+<ion-item
+  lines="full"
+  (click)="redirect()"
+  detail="true"
+  class="w-[90%] m-[auto] rounded-[5px] pb-[1vh]"
+>
   <ion-avatar slot="start">
-    <img [src]="item?.photo" alt="" />
+    <img [src]="item?.photo"/>
   </ion-avatar>
   <ion-label>
     {{ item?.name }}
